@@ -1,0 +1,27 @@
+<h1>Weather details</h1>
+
+<form [formGroup]="form">
+  <label for="city">City:</label>
+  <input type="text" id="city" formControlName="city">
+  <button type="submit" (click)="handleForm()">Get</button>
+</form>
+
+@if (data) {
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">Temperature</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (line of data| keyvalue; track $index) {
+        <tr>
+          <th>{{line.key}}</th>
+          <td>{{line.value}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <p>Start by searching for a city!</p>
+}
